@@ -1,5 +1,5 @@
 resource "aws_api_gateway_method" "get" {
-  http_method   = "GET"
+  http_method   = "POST"
   authorization = "NONE"
   resource_id   = var.api_resource_id
   rest_api_id   = var.api_id

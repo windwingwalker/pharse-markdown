@@ -47,15 +47,15 @@ pipeline{
         }
       }
     }
-    stage('Push Image'){
-      steps{
-        script{
-          docker.withRegistry("https://${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:aws_credentials") {
-            image.push()
-          }
-        }
-      }
-    }
+    // stage('Push Image'){
+    //   steps{
+    //     script{
+    //       docker.withRegistry("https://${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:aws_credentials") {
+    //         image.push()
+    //       }
+    //     }
+    //   }
+    // }
     stage('Deploy'){
       steps{
         dir('terraform'){

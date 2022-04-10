@@ -3,6 +3,7 @@ class PlainArticle{
   title: string;
   subtitle: string;
   type: string;
+  tags: string[];
   body: Body[] = [];
 }
 

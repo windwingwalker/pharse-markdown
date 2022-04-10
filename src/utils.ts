@@ -38,6 +38,10 @@ const pharseMarkdown = (file: string) => {
         res["type"] = element.slice(8, element.length + 1)
       }else if (element.slice(0, 17) == "- firstPublished:"){
         res["firstPublished"] = +element.slice(18, element.length + 1)
+      }else if (element.slice(0, 7) == "- tags:"){
+        var tagString = element.slice(8, element.length + 1)
+        var tagList = tagString.split(",").map(item => item.trim())
+        res["tags"] = tagList
       }
     }
   }

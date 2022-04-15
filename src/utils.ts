@@ -42,6 +42,8 @@ const pharseMarkdown = (file: string) => {
         var tagString = element.slice(8, element.length + 1)
         var tagList = tagString.split(",").map(item => item.trim())
         res["tags"] = tagList
+      }else if (element.slice(0, 9) == "- series:"){
+        res["series"] = element.slice(10, element.length + 1)
       }
     }
   }

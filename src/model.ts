@@ -4,6 +4,7 @@ class PlainArticle{
   subtitle: string;
   type: string;
   tags: string[];
+  series: string;
   body: Body[] = [];
 }
 

@@ -14,22 +14,6 @@ variable "lambda_role" {
   type = string
 }
 
-variable "api_id" {
-  type = string
-}
-
-variable "api_root_resource_id" {
-  type = string
-}
-
-variable "api_resource_id" {
-  type = string
-}
-
-variable "api_execution_arn" {
-  type = string
-}
-
 variable "tag" {
   type = string
 }

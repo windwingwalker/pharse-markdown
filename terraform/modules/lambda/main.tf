@@ -1,3 +1,7 @@
+data "aws_api_gateway_rest_api" "default" {
+  name = "article-gateway"
+}
+
 resource "aws_ecr_repository" "default" {
   name                 = var.app_name
   image_tag_mutability = "IMMUTABLE"
@@ -5,6 +9,12 @@ resource "aws_ecr_repository" "default" {
   image_scanning_configuration {
     scan_on_push = true
   }
+}
+
+resource "aws_lambda_alias" "default" {
+  name             = "dev"
+  function_name    = aws_lambda_function.default.arn
+  function_version = aws_lambda_function.default.version
 }
 
 resource "aws_lambda_function" "default" {
@@ -18,6 +28,7 @@ resource "aws_lambda_function" "default" {
     aws_ecr_repository.default,
     aws_cloudwatch_log_group.default
   ]
+  publish = true
 }
 
 resource "aws_cloudwatch_log_group" "default" {

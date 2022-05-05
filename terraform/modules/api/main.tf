@@ -8,7 +8,7 @@ data "aws_api_gateway_rest_api" "default" {
 
 data "aws_api_gateway_resource" "default" {
   rest_api_id = data.aws_api_gateway_rest_api.default.id
-  path        = "/article"
+  path        = "/markdown"
 }
 
 resource "aws_api_gateway_method" "default" {

@@ -1,7 +1,3 @@
-data "aws_lambda_function" "default" {
-  function_name = var.app_name
-}
-
 data "aws_api_gateway_rest_api" "default" {
   name = "article-gateway"
 }
@@ -24,7 +20,7 @@ resource "aws_api_gateway_integration" "default" {
   http_method             = aws_api_gateway_method.default.http_method
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = "arn:aws:apigateway:${var.aws_region}:lambda:path/2015-03-31/functions/${data.aws_lambda_function.default.arn}:$${stageVariables.alias}/invocations"
+  uri                     = "arn:aws:apigateway:${var.aws_region}:lambda:path/2015-03-31/functions/${var.function_arn}:$${stageVariables.alias}/invocations"
   depends_on              = [aws_api_gateway_method.default]
 }
 

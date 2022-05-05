@@ -24,4 +24,5 @@ module "api" {
   source = "./modules/api/"
   app_name = var.app_name
   aws_region = var.aws_region
+  function_arn = module.lambda.function_arn
 }

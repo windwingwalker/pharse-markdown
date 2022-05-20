@@ -1,10 +1,10 @@
 data "aws_api_gateway_rest_api" "default" {
-  name = "article-gateway"
+  name = "${var.app_name}-gateway"
 }
 
 data "aws_api_gateway_resource" "default" {
   rest_api_id = data.aws_api_gateway_rest_api.default.id
-  path        = "/markdown"
+  path        = "/${var.resource_name}"
 }
 
 resource "aws_api_gateway_method" "default" {
@@ -51,7 +51,7 @@ resource "aws_api_gateway_deployment" "default" {
 resource "aws_lambda_permission" "default" {
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"
-  function_name = var.app_name
+  function_name = var.ms_name
   principal     = "apigateway.amazonaws.com"
 
   source_arn = "${data.aws_api_gateway_rest_api.default.execution_arn}/*/*"
